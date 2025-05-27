@@ -1,0 +1,98 @@
+<<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Barışaq? 😊</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #fff0f5;
+            margin-top: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 28px;
+            color: #d63384;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .yes-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+        }
+        #message {
+            margin-top: 40px;
+            font-size: 22px;
+            color: #c2185b;
+            font-weight: bold;
+            display: none;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            animation: float 5s linear infinite;
+            font-size: 24px;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gülüm çox darıxmışam. Barışaq? 😊</h1>
+    <button class="btn yes-btn" onclick="yesClicked()">Hə</button>
+    <button class="btn no-btn" id="noBtn" onclick="moveButton()">Yox</button>
+
+    <div id="message">Siz Ramazanın Gözəlisiniz. Ramazan Sizi hər şeydən çox Sevir ❤</div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        function moveButton() {
+            const x = Math.floor(Math.random() * (window.innerWidth - 100));
+            const y = Math.floor(Math.random() * (window.innerHeight - 50));
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function yesClicked() {
+            document.getElementById('message').style.display = 'block';
+
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+                heart.innerHTML = '❤';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+    </script>
+
+</body>
+</html>
